@@ -1,0 +1,19 @@
+seata:
+  enabled: true
+  application-id: order-server-name
+  tx-service-group: my_test_group
+  enable-auto-data-source-proxy: true
+
+  use-jdk-proxy: false
+  service:
+    vgroup-mapping:
+      my_test_group: seata-server
+    enable-degrade: false
+    disable-global-transaction: false
+  config:
+    type: file
+  registry:
+    type: eureka
+    eureka:
+      weight: 1
+      service-url: http://localhost:8761/eureka

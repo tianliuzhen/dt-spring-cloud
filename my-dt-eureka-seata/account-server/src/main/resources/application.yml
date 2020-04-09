@@ -32,25 +32,7 @@ spring:
     password: 123456
     url: jdbc:mysql://127.0.0.1/seat-account?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
+  profiles:
+    active: seata
 
 
-
-seata:
-  enabled: true
-  application-id: account-server-name
-  tx-service-group: my_test_group
-  enable-auto-data-source-proxy: true
-
-  use-jdk-proxy: false
-  service:
-    vgroup-mapping:
-      my_test_group: seata-server
-    enable-degrade: false
-    disable-global-transaction: false
-  config:
-    type: file
-  registry:
-    type: eureka
-    eureka:
-      weight: 1
-      service-url: http://localhost:8761/eureka
