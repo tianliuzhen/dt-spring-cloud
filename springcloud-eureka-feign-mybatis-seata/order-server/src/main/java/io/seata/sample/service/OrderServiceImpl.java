@@ -57,6 +57,7 @@ public class OrderServiceImpl implements OrderService{
      * 修改订单状态
      */
     @Override
+    @GlobalTransactional(name = "fsp-update-order",rollbackFor = Exception.class)
     public void update(Long userId,BigDecimal money,Integer status) {
         LOGGER.info("修改订单状态，入参为：userId={},money={},status={}",userId,money,status);
         orderDao.update(userId,money,status);
