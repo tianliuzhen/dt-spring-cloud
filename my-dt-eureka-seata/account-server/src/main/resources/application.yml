@@ -1,0 +1,56 @@
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 10000
+logging:
+  level:
+    io:
+      seata: info
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: io.seata.sample.entity
+server:
+  port: 8181
+spring:
+  application:
+    name: account-server
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_group
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 123456
+    url: jdbc:mysql://127.0.0.1/seat-account?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+
+
+
+seata:
+  enabled: true
+  application-id: account-server-name
+  tx-service-group: my_test_group
+  enable-auto-data-source-proxy: true
+
+  use-jdk-proxy: false
+  service:
+    vgroup-mapping:
+      my_test_group: seata-server
+    enable-degrade: false
+    disable-global-transaction: false
+  config:
+    type: file
+  registry:
+    type: eureka
+    eureka:
+      weight: 1
+      service-url: http://localhost:8761/eureka
