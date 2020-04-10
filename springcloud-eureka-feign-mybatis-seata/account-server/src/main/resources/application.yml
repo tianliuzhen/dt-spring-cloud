@@ -28,7 +28,8 @@ spring:
             seata:
                 tx-service-group: my_test_group
     datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        password: 123456
-        url: jdbc:mysql://127.0.0.1/seat-account
-        username: root
+        hikari:
+            driver-class-name: com.mysql.jdbc.Driver
+            password: 123456
+            jdbc-url: jdbc:mysql://127.0.0.1/seat-account
+            username: root
