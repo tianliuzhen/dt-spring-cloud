@@ -46,7 +46,7 @@ public class AccountServiceImpl implements AccountService{
         LOGGER.info("修改订单状态结束：{}",mes);
 
         if (true){
-            // throw new RuntimeException("自定义抛异常");
+           throw new RuntimeException("自定义抛异常");
         }
     }
 }

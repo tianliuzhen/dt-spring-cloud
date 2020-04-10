@@ -2,7 +2,7 @@ seata:
   enabled: true
   application-id: account-server-name
   tx-service-group: my_test_group
-  enable-auto-data-source-proxy: true
+  enable-auto-data-source-proxy: false
 
   use-jdk-proxy: false
   service:
