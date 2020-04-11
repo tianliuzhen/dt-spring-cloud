@@ -29,5 +29,5 @@ spring:
       password: Tlz19970905
       url: jdbc:mysql://47.98.253.2:3306/seata_storage?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
       username: root
-#  profiles:
-#    active: seata
+  profiles:
+    active: seata

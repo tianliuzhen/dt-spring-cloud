@@ -43,26 +43,26 @@ public class DataSourceProxyConfig {
     }
 
 
-
-    @Bean(name = "order")
-    public DataSourceProxy masterDataSourceProxy(@Qualifier("originOrder") DataSource dataSource) {
-        return new DataSourceProxy(dataSource);
-    }
-
-    @Bean(name = "storage")
-    public DataSourceProxy storageDataSourceProxy(@Qualifier("originStorage") DataSource dataSource) {
-        return new DataSourceProxy(dataSource);
-    }
-
-    @Bean(name = "pay")
-    public DataSourceProxy payDataSourceProxy(@Qualifier("originPay") DataSource dataSource) {
-        return new DataSourceProxy(dataSource);
-    }
+//
+//    @Bean(name = "order")
+//    public DataSourceProxy masterDataSourceProxy(@Qualifier("originOrder") DataSource dataSource) {
+//        return new DataSourceProxy(dataSource);
+//    }
+//
+//    @Bean(name = "storage")
+//    public DataSourceProxy storageDataSourceProxy(@Qualifier("originStorage") DataSource dataSource) {
+//        return new DataSourceProxy(dataSource);
+//    }
+//
+//    @Bean(name = "pay")
+//    public DataSourceProxy payDataSourceProxy(@Qualifier("originPay") DataSource dataSource) {
+//        return new DataSourceProxy(dataSource);
+//    }
 
     @Bean("dynamicDataSource")
-    public DataSource dynamicDataSource(@Qualifier("order") DataSource dataSourceOrder,
-                                        @Qualifier("storage") DataSource dataSourceStorage,
-                                        @Qualifier("pay") DataSource dataSourcePay) {
+    public DataSource dynamicDataSource(@Qualifier("originOrder") DataSource dataSourceOrder,
+                                        @Qualifier("originStorage") DataSource dataSourceStorage,
+                                        @Qualifier("originPay") DataSource dataSourcePay) {
 
         DynamicRoutingDataSource dynamicRoutingDataSource = new DynamicRoutingDataSource();
 
