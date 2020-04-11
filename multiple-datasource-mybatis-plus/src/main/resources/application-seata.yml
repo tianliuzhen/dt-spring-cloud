@@ -1,0 +1,17 @@
+seata:
+  enabled: true
+  application-id: account-server-name
+  tx-service-group: my_test_tx_group
+  enable-auto-data-source-proxy: false
+
+  use-jdk-proxy: false
+  service:
+    vgroup-mapping:
+      my_test_group: default
+    enable-degrade: false
+    disable-global-transaction: false
+    grouplist: 127.0.0.1:8091
+  config:
+    type: file
+  registry:
+    type: file

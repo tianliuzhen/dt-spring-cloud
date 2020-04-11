@@ -13,13 +13,12 @@ spring:
       jdbc-url: jdbc:mysql://47.98.253.2:3306/seata_order?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
       password: Tlz19970905
       username: root
-      #配置连接池信息
       max-lifetime: 1500000
-      minIdle: 3
+      minimum-idle: 3
       connection-timeout: 30000
       idle-timeout: 30000
       pool-name: SpringBootHikariCP
-      maxPoolSize: 8
+      maximum-pool-size: 8
     pay:
       driver-class-name: com.mysql.cj.jdbc.Driver
       password: Tlz19970905
@@ -30,3 +29,5 @@ spring:
       password: Tlz19970905
       url: jdbc:mysql://47.98.253.2:3306/seata_storage?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
       username: root
+#  profiles:
+#    active: seata
