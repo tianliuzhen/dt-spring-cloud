@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class DynamicDataSourceContextHolder {
 
-    private static final ThreadLocal<String> CONTEXT_HOLDER = ThreadLocal.withInitial(DataSourceKey.ORDER::name);
+    private static final ThreadLocal<String> CONTEXT_HOLDER = ThreadLocal.withInitial(DataSourceKey.PAY::name);
 
     private static List<Object> dataSourceKeys = new ArrayList<>();
 

@@ -7,6 +7,7 @@ import io.seata.samples.mutiple.mybatisplus.common.order.OrderStatus;
 import io.seata.samples.mutiple.mybatisplus.common.order.PlaceOrderRequestVO;
 import io.seata.samples.mutiple.mybatisplus.config.DataSourceKey;
 import io.seata.samples.mutiple.mybatisplus.config.DynamicDataSourceContextHolder;
+import io.seata.samples.mutiple.mybatisplus.config.annotation.DB;
 import io.seata.samples.mutiple.mybatisplus.dao.OrderDao;
 import io.seata.samples.mutiple.mybatisplus.service.OrderService;
 import io.seata.samples.mutiple.mybatisplus.service.PayService;
@@ -15,6 +16,8 @@ import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -35,9 +38,11 @@ public class OrderServiceImpl implements OrderService {
 
     @GlobalTransactional
     @Override
+    @DB(DataSourceKey.ORDER)
     public OperationResponse placeOrder(PlaceOrderRequestVO placeOrderRequestVO) throws Exception {
         log.info("=============ORDER=================");
-        DynamicDataSourceContextHolder.setDataSourceKey(DataSourceKey.ORDER);
+        List<Order> orders = orderDao.selectList(null);
+//        DynamicDataSourceContextHolder.setDataSourceKey(DataSourceKey.ORDER);
         log.info("当前 XID: {}", RootContext.getXID());
 
         Integer amount = 1;
