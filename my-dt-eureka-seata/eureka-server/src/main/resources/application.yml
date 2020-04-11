@@ -7,8 +7,13 @@ eureka:
   instance:
     hostname: localhost
   client:
+    #是否将该实例信息注册到其他eureka server上；如果设置为false，那么该server无法被其他server发现，但是仍然可以发现其他server
+    #一般用于 eureka 集群
     register-with-eureka: false
+    #是否检索服务。该应用为服务注册中心，职责为注册和发现服务，无需检索服务，设置为 false
     fetch-registry: false
     service-url:
       defultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
+  server: #配置属性，但由于 Eureka 自我保护模式以及心跳周期长的原因，经常会遇到 Eureka Server 不剔除已关停的节点的问题
+    enable-self-preservation: false #关闭自我保护设为false，关闭自我保护
+    eviction-interval-timer-in-ms: 2000 #清理间隔（单位毫秒，默认是60*1000）启用主动失效，并且每次主动失效检测间隔为3s
