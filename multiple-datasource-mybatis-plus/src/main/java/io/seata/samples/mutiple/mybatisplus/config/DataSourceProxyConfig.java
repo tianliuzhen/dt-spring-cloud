@@ -2,6 +2,7 @@ package io.seata.samples.mutiple.mybatisplus.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import com.zaxxer.hikari.HikariDataSource;
 import io.seata.rm.datasource.DataSourceProxy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,12 +19,17 @@ import java.util.Map;
 @Configuration
 public class DataSourceProxyConfig {
 
+//    @Bean("originOrder")
+//    @ConfigurationProperties(prefix = "spring.datasource.order")
+//    public DataSource dataSourceMaster() {
+//        return new DruidDataSource();
+//    }
+
     @Bean("originOrder")
     @ConfigurationProperties(prefix = "spring.datasource.order")
     public DataSource dataSourceMaster() {
-        return new DruidDataSource();
+        return new HikariDataSource();
     }
-
     @Bean("originStorage")
     @ConfigurationProperties(prefix = "spring.datasource.storage")
     public DataSource dataSourceStorage() {
@@ -35,6 +41,8 @@ public class DataSourceProxyConfig {
     public DataSource dataSourcePay() {
         return new DruidDataSource();
     }
+
+
 
     @Bean(name = "order")
     public DataSourceProxy masterDataSourceProxy(@Qualifier("originOrder") DataSource dataSource) {
