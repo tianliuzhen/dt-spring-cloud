@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService{
      * @param money 金额
      */
     @Override
-    @GlobalTransactional(name = "fsp-update-order",rollbackFor = Exception.class)
+    @GlobalTransactional(name = "fsp-update-account",rollbackFor = Exception.class)
     public void decrease(Long userId, BigDecimal money) {
         LOGGER.info("------->扣减账户开始account中");
         //模拟超时异常，全局事务回滚
